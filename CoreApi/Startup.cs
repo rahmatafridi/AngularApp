@@ -53,7 +53,7 @@ namespace CoreApi
                 app.UseDeveloperExceptionPage();
             }
             app.UseCors(x=>x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-            app.UseAuthentication();
+            app.UseAuthentication();  
             app.UseMvc();
            
         }
