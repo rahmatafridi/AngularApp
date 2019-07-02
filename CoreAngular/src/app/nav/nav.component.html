@@ -22,7 +22,7 @@
       </a>
       <div id="dropdown-triggers-manual"  *dropdownMenu class="dropdown-menu mt-3"
           role="menu" aria-labelledby="button-triggers-manual">
-        <li role="menuitem"><a class="dropdown-item" href="#">Edit Profile</a></li>
+        <li role="menuitem"><a class="dropdown-item" [routerLink]="['/member/edit']">Edit Profile</a></li>
         <li role="menuitem"><a class="dropdown-item" (click)="logout()">Log Out</a>
         </li>
        
