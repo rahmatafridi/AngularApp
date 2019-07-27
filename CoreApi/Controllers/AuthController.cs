@@ -3,8 +3,10 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using CoreApi.Data;
 using CoreApi.Dtos;
+using CoreApi.Helpers;
 using CoreApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -18,10 +20,12 @@ namespace CoreApi.Controllers
     {
         private readonly IAuthRepository _repo;
         private readonly IConfiguration _config;
-        public AuthController(IAuthRepository repo, IConfiguration config)
+        private readonly AutoMapperProfiles _mapper;
+        public AuthController(IAuthRepository repo, IConfiguration config, AutoMapperProfiles mapper)
         {
             _config = config;
             _repo=repo;
+            _mapper=mapper;
         }
         [HttpPost("register")]
         public async Task<IActionResult> Register(UserForRegisterDto userForRegisterDto)
@@ -33,10 +37,9 @@ namespace CoreApi.Controllers
                 return BadRequest("UserName already exists");
             }
 
-            var userToCreate =new User{
-                 Username=userForRegisterDto.Username
-            };
-            var CreatedUser=await _repo.Register(userToCreate,userForRegisterDto.Password);
+            var userToCreate = _mapper.Map<User>(userForRegisterDto);
+        
+           // var CreatedUser=await _repo.Register(userToCreate,userForRegisterDto.Password);
             return StatusCode(201);
         }
         [HttpPost("login")]

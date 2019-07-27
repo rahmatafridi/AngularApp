@@ -6,7 +6,7 @@ namespace CoreApi.Models
 {
     public class User
     {
-        private ICollection photos;
+        //private ICollection photos;
 
         public int Id { get; set; }
         public string Username { get; set; }

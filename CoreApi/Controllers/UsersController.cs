@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CoreApi.Controllers
 {
-   [Authorize]
+   //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase

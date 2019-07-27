@@ -28,6 +28,15 @@ namespace CoreApi.Helpers
             });
             CreateMap<Photo, PhotosForDetailDto>();
             CreateMap<UserForUpdateDto, User>();
+            CreateMap<Photo, photoForReturnDto>();
+            CreateMap<PhotoForCreationDto, Photo>();
+            CreateMap<UserForRegisterDto,User>();
+
+        }
+
+        internal object Map<T>(UserForRegisterDto userForRegisterDto)
+        {
+            throw new NotImplementedException();
         }
     }
 }
